@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
         val call: Call<FlickrImages> = flickrService.getImages()
         call.enqueue(object: Callback<FlickrImages> {
             override fun onFailure(call: Call<FlickrImages>?, t: Throwable?) {
-
             }
 
             override fun onResponse(call: Call<FlickrImages>?, response: Response<FlickrImages>?) {
                 flickrAdapter.setFlickrImage(response!!.body())
+                flickrAdapter.notifyDataSetChanged()
             }
         })
 
