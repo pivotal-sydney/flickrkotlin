@@ -1,14 +1,16 @@
 package com.example.pivotal.flickrkotlin.model
 
+import java.util.*
+
 class FlickrImages {
-    val items: List<FlickrImage>? = null
+    var items: List<FlickrImage> = ArrayList()
 }
 
 class FlickrImage {
-    val title: String? = null
-    val media: Media? = null
+    var title: String = ""
+    var media: Media = Media()
 }
 
 class Media {
-    val m: String? = null
+    var m: String = ""
 }

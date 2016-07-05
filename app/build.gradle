@@ -28,7 +28,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'org.jetbrains.anko:anko-recyclerview-v7:0.9' // sdk19, sdk21, sdk23 are also available
@@ -41,5 +41,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:3.4.1'
     testCompile 'org.robolectric:robolectric:3.1'
+    testCompile("com.nhaarman:mockito-kotlin:0.5.1") {
+        exclude module: 'kotlin-stdlib'
+        exclude module: 'kotlin-runtime'
+    }
 }
 

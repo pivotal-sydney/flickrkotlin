@@ -41,16 +41,12 @@ class FlickrAdapter(val picasso: Picasso) : RecyclerView.Adapter<FlickrViewHolde
     }
 
     fun setFlickrImage(flickrImages: FlickrImages) {
-        this.flickrImages = flickrImages.items!!
+        this.flickrImages = flickrImages.items
     }
 
     override fun onBindViewHolder(holder: FlickrViewHolder?, position: Int) {
-        val url = flickrImages.get(position).media!!.m
-        val text = flickrImages.get(position).title
-        picasso.load(url).into(holder!!.image)
-        holder.text.text = text
+        holder?.bind(flickrImages[position])
     }
-
 
     inner class FlickrViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView
@@ -59,6 +55,11 @@ class FlickrAdapter(val picasso: Picasso) : RecyclerView.Adapter<FlickrViewHolde
         init {
             image = itemView.find(ID_IMAGE)
             text = itemView.find(ID_TEXT)
+        }
+
+        fun bind(flickrImage: FlickrImage) {
+            picasso.load(flickrImage.media.m).into(image)
+            text.text = flickrImage.title
         }
     }
 }
